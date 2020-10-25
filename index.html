@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/40341e764f.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: rgb(145, 199, 169);
+        }
+
+        .container {
+            width: 150px;
+            height: 200px;
+            position: relative;
+            top: 25vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: .8s;
+            transform-style: preserve-3d;
+            box-shadow: 5px 5px 15px rgb(97, 97, 97);
+        }
+
+
+        .front,
+        .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 5px;
+        }
+
+        .front {
+            background: linear-gradient(rgb(243, 146, 146), rgb(156, 30, 30));
+        }
+
+        .back {
+            background: linear-gradient(rgb(218, 162, 162), rgb(102, 19, 19));
+            transform: rotateY(180deg);
+
+        }
+
+        /* .container:hover .card {
+            transform: rotateY(180deg);
+        } */
+
+        section p {
+            font-size: 20px;
+            text-align: center;
+            line-height: 200px;
+            color: lavenderblush;
+            text-transform: uppercase;
+        }
+
+        .button {
+            position: fixed;
+            top: 55vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 40px;
+            background-color: rgb(58, 72, 155);
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .button p {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: rgb(243, 232, 224);
+            font-size: 18px;
+            transition: .4s;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%) rotateY(90deg);
+            left: 0;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(212, 199, 199, .4);
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        .button:hover p {
+            text-indent: 35px;
+        }
+
+        .button:hover .arrow {
+            transform: translate(-10%, -50%) rotateY(0deg);
+        }
+
+        .divcontainer {
+            position: fixed;
+            top: 70vh;
+            left: 50vw;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 40px;
+            /* background-color: rgb(242, 179, 255); */
+            cursor: pointer;
+            overflow: hidden;
+            perspective: 150px;
+        }
+
+        .divcontainer div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 40px;
+            text-align: center;
+            color: rgb(243, 232, 224);
+            font-size: 18px;
+            transition: .4s;
+            /* transform-style: preserve-3d; */
+        }
+
+        .hoverme {
+            background-color: rgb(186, 64, 197);
+        }
+
+        .hovered {
+            background-color: rgb(97, 40, 102);
+            transform: translate3d(0, -23px, 0) rotateX(90deg);
+        }
+
+        .divcontainer:hover .hoverme {
+            transform: translate3d(0, 20px, 0px) rotateX(90deg);
+        }
+
+        .divcontainer:hover .hovered {
+            transform: translateY(0px) rotateX(0deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <section class="front">
+                <p>Hello!</p>
+            </section>
+            <section class="back">
+                <p>Goodbye!</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="button">
+        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+        <p>See more</p>
+    </div>
+
+    <section class="divcontainer">
+        <div class="hoverme">Hover me</div>
+        <div class="hovered">Yay!</div>
+    </section>
+
+    <script>
+        const container = document.querySelector(".container");
+        const card = document.querySelector(".card");
+
+        container.addEventListener("mouseover", () => {
+            card.style.transform = "rotateY(180deg)";
+
+        })
+
+        container.addEventListener("mouseout", () => {
+            card.style.transform = "rotateY(0deg)";
+
+        })
+    </script>
+</body>
+
+</html>
